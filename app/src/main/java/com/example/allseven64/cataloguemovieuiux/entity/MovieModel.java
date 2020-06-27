@@ -10,6 +10,7 @@ import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.Movi
 import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.MovieColums.POSTER;
 import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.MovieColums.RELEASE;
 import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.MovieColums.TITLE;
+import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.MovieColums.VOTE;
 import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.getColumnInt;
 import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.getColumnString;
 
@@ -20,19 +21,17 @@ public class MovieModel implements Parcelable{
     private String releaseDate;
     private String popularity;
     private String overview;
-    private Double vote_average;
+    private String vote_average;
 
-    public Double getVote_average() {
+
+    public String getVote_average() {
         return vote_average;
     }
 
-    public void setVote_average(Double vote_average) {
+    public void setVote_average(String vote_average) {
         this.vote_average = vote_average;
     }
 
-    public static Creator<MovieModel> getCREATOR() {
-        return CREATOR;
-    }
 
     public int getId() {
         return id;
@@ -95,6 +94,7 @@ public class MovieModel implements Parcelable{
         dest.writeString(this.overview);
         dest.writeString(this.releaseDate);
         dest.writeString(this.popularity);
+        dest.writeString(this.vote_average);
     }
 
     public MovieModel(){
@@ -108,6 +108,7 @@ public class MovieModel implements Parcelable{
         this.overview = getColumnString(cursor, OVERVIEW);
         this.releaseDate = getColumnString(cursor, RELEASE);
         this.popularity = getColumnString(cursor, POPULARITY);
+        this.vote_average = getColumnString(cursor, VOTE);
     }
 
     protected MovieModel(Parcel in){
@@ -117,6 +118,7 @@ public class MovieModel implements Parcelable{
         this.overview = in.readString();
         this.releaseDate = in.readString();
         this.popularity = in.readString();
+        this.vote_average = in.readString();
     }
 
     public static final Parcelable.Creator<MovieModel> CREATOR = new Parcelable.Creator<MovieModel>(){
