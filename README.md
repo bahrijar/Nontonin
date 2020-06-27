@@ -1,6 +1,7 @@
-# CatalogueMovieUIUX-Basisdata
-Submission 4. Catalogue Movie Basisdata. Project MADE dicoding
+# Nontonin Katalog
+Tugas Pemrograman Web
 
-Project Catalogue Movie Basisdata menggunakan Basisdata SQLite dan Content Provider. 
+Project Nontonin Katalog Basisdata menggunakan Basisdata SQLite dan Content Provider. 
 Fitur Pencarian movie, Now Playing, dan Upcoming.
-API : https://www.themoviedb.org/documentation/api
+
+Menggunakan API : https://www.themoviedb.org/documentation/api
