@@ -62,7 +62,7 @@ public class NowUpAdapter extends RecyclerView.Adapter<NowUpAdapter.ViewHolder> 
         holder.textViewTitle.setText(mData.get(position).getTitle());
         holder.textViewOverview.setText(mData.get(position).getOverview());
         holder.textViewPopularity.setText(holder.itemView.getResources().getString(R.string.popularity)+": "+mData.get(position).getPopularity());
-        holder.textViewVoteAverage.setText("Vote: " + mData.get(position).getVoteAverage().toString());
+        holder.textViewVoteAverage.setText("Vote: " + mData.get(position).getVoteAverage());
         Glide.with(context).load(mData.get(position).getPosterPath()).into(holder.imageViewPoster);
 
         String re_date = mData.get(position).getReleaseDate();
@@ -85,7 +85,7 @@ public class NowUpAdapter extends RecyclerView.Adapter<NowUpAdapter.ViewHolder> 
                 intent.putExtra(DetailMovieActivity.EXTRA_OVERVIEW, mData.get(position).getOverview());
                 intent.putExtra(DetailMovieActivity.EXTRA_RELEASE, mData.get(position).getReleaseDate());
                 intent.putExtra(DetailMovieActivity.EXTRA_POPULARITY, mData.get(position).getPopularity());
-                intent.putExtra(DetailMovieActivity.EXTRA_VOTE, mData.get(position).getVoteAverage().toString());
+                intent.putExtra(DetailMovieActivity.EXTRA_VOTE, mData.get(position).getVoteAverage());
                 intent.putExtra(DetailMovieActivity.EXTRA_POSTER, mData.get(position).getPosterPath());
 
                 context.startActivity(intent);
