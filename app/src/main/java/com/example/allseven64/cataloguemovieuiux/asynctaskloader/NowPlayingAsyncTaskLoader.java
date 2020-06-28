@@ -79,8 +79,7 @@ public class NowPlayingAsyncTaskLoader extends AsyncTaskLoader<ArrayList<MovieIt
                         JSONObject movie = list.getJSONObject(i);
                         MovieItems movieItems = new MovieItems(movie);
                         movieItemses.add(movieItems);
-                        //Log.d("LIST", "onSuccess" + movieItems.getPosterPath());
-                        //Log.d("LIST", "onSuccess" + movieItems.getTitle());
+
                     }
                 }catch (Exception e){
                     e.printStackTrace();
