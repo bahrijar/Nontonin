@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DetailMovieActivity"
     tools:showIn="@layout/activity_detail_movie">
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="?attr/backgroundColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -65,6 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/title_movie"
+                        android:textColor="?attr/textColor"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -73,18 +76,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+                        android:textColor="?attr/textColor"
                         android:text="@string/release" />
 
                     <TextView
                         android:id="@+id/tv_popularity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="?attr/textColor"
                         android:text="@string/popularity" />
 
                     <TextView
                         android:id="@+id/tv_vote"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="?attr/textColor"
                         android:text="@string/vote_average" />
 
                     <LinearLayout
@@ -97,6 +103,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="8dp"
+                            android:textColor="?attr/textColor"
                             android:text="@string/add_favorite" />
 
                         <ToggleButton
@@ -118,12 +125,14 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/overview"
                 android:textSize="16sp"
+                android:textColor="?attr/textColor"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_overview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/textColor"
                 android:text="Description" />
         </LinearLayout>
 

@@ -14,7 +14,7 @@ public class DatabaseContract {
         public static String RELEASE = "releaseDate";
         public static String POPULARITY = "popularity";
         public static String OVERVIEW = "overview";
-        public static String VOTE = "vote";
+        public static String VOTE = "vote_average";
 
     }
 

@@ -3,7 +3,6 @@ package com.example.allseven64.cataloguemovieuiux.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,17 +15,12 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.allseven64.cataloguemovieuiux.CustomOnItemClickListener;
 import com.example.allseven64.cataloguemovieuiux.DetailMovieActivity;
-import com.example.allseven64.cataloguemovieuiux.MovieItems;
 import com.example.allseven64.cataloguemovieuiux.R;
-import com.example.allseven64.cataloguemovieuiux.db.MovieHelper;
-import com.example.allseven64.cataloguemovieuiux.entity.MovieModel;
+import com.example.allseven64.cataloguemovieuiux.model.MovieModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-
-import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.CONTENT_URI;
 
 public class FavAdapter extends RecyclerView.Adapter<FavAdapter.FavoriteHolder> {
     private Cursor listFavMovie;
@@ -56,7 +50,8 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.FavoriteHolder> 
 
         holder.textViewTitle.setText(movieModel.getTitle());
         holder.textViewOverview.setText(movieModel.getOverview());
-        holder.textViewPopularity.setText(holder.itemView.getResources().getString(R.string.popularity)+": "+movieModel.getPopularity());
+        holder.textViewPopularity.setText(holder.itemView.getResources().getString(R.string.popularity) + ": " + movieModel.getPopularity());
+        holder.textViewVoteAverage.setText("Vote"+ ": " + movieModel.getVote_average());
         Glide.with(context).load(movieModel.getPosterPath()).into(holder.imageViewPoster);
 
         String re_date = movieModel.getReleaseDate();
@@ -71,24 +66,6 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.FavoriteHolder> 
             e.printStackTrace();
         }
 
-        holder.btnDetail.setOnClickListener(new CustomOnItemClickListener(position, new CustomOnItemClickListener.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(View view, int position) {
-                Intent intent = new Intent (context, DetailMovieActivity.class);
-                intent.putExtra(DetailMovieActivity.EXTRA_MOVIE, movieModel);
-                intent.putExtra(DetailMovieActivity.EXTRA_POSITION, position);
-                context.startActivity(intent);
-
-            }
-        }));
-
-        holder.btnShare.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Toast.makeText(context,"Share "+ ""+ movieModel.getTitle(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
     }
 
@@ -113,13 +90,13 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.FavoriteHolder> 
         return new MovieModel(listFavMovie);
     }
 
-    class FavoriteHolder extends RecyclerView.ViewHolder{
+    class FavoriteHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imageViewPoster;
         TextView textViewTitle;
         TextView textViewOverview;
-        TextView textViewReleaseDate;
+        TextView textViewReleaseDate, textViewVoteAverage;
         TextView textViewPopularity;
-        Button btnShare, btnDetail;
+
 
         FavoriteHolder (View itemView){
             super(itemView);
@@ -128,9 +105,20 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.FavoriteHolder> 
             textViewOverview = itemView.findViewById(R.id.tv_overview_cv);
             textViewReleaseDate = itemView.findViewById(R.id.tv_release_cv);
             textViewPopularity = itemView.findViewById(R.id.tv_popularity_cv);
-            btnDetail = itemView.findViewById(R.id.btn_set_detail);
-            btnShare = itemView.findViewById(R.id.btn_set_share);
+            textViewVoteAverage = itemView.findViewById(R.id.tv_vote_cv);
 
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            final MovieModel movieModel = getItem(position);
+            Intent intent = new Intent (context, DetailMovieActivity.class);
+                intent.putExtra(DetailMovieActivity.EXTRA_MOVIE, movieModel);
+                intent.putExtra(DetailMovieActivity.EXTRA_POSITION, position);
+                context.startActivity(intent);
         }
     }
 }

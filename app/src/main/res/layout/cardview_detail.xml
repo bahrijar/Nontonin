@@ -1,120 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="4dp"
-    card_view:cardCornerRadius="10dp">
+    android:layout_height="180dp"
+    android:background="?attr/backgroundColor">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/container_bg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp">
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/container_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_cv"
-            android:layout_width="150dp"
-            android:layout_height="220dp"
-            android:layout_marginBottom="4dp"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
-            tools:src="@color/colorAccent" />
+            android:src="@drawable/mrrobot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/tv_title_cv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/img_cv"
-            android:layout_toRightOf="@id/img_cv"
-            android:text="@string/title_movie"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/container_bg"
+        app:layout_constraintStart_toStartOf="@+id/container_bg"
+        app:layout_constraintTop_toTopOf="@+id/container_bg">
 
-        <TextView
-            android:id="@+id/tv_overview_cv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_title_cv"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/img_cv"
-            android:layout_toRightOf="@id/img_cv"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/overview" />
-
-        <TextView
-            android:id="@+id/tv_release_cv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_overview_cv"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/img_cv"
-            android:layout_toRightOf="@id/img_cv"
-            android:text="@string/release" />
-
-        <TextView
-            android:id="@+id/tv_popularity_cv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_release_cv"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/img_cv"
-            android:layout_toRightOf="@id/img_cv"
-            android:text="@string/popularity" />
-
-        <TextView
-            android:id="@+id/tv_vote_cv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_popularity_cv"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/img_cv"
-            android:layout_toRightOf="@id/img_cv"
-            android:text="@string/vote_average" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_toEndOf="@id/img_cv"
-            android:layout_toRightOf="@id/img_cv"
-            android:orientation="horizontal">
+            android:layout_marginLeft="130dp"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_set_detail"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_title_cv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/detail"
+                android:fontFamily="@font/segoeuib"
+                android:text="Mr.Robot"
+                android:textColor="?attr/textColor"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_vote_cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_tvorange"
+                android:ellipsize="end"
+                android:fontFamily="@font/segoeui"
+                android:text="7.1 Vote"
+                android:textColor="?attr/tintColor"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintTop_toTopOf="@+id/container_bg" />
+
+            <TextView
+                android:id="@+id/tv_release_cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/segoeui"
+                android:text="Tanggal Rilis"
+                android:textColor="?attr/textColor"
                 android:textSize="12sp" />
 
-            <Button
-                android:id="@+id/btn_set_share"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_popularity_cv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/share"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/segoeui"
+                android:text="Popularity"
+                android:textColor="?attr/textColor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_overview_cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/segoeui"
+                android:maxLines="2"
+                android:text="In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker. "
+                android:textColor="?attr/textColor"
                 android:textSize="12sp" />
         </LinearLayout>
     </RelativeLayout>
-</android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>
+
+

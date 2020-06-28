@@ -18,6 +18,7 @@ import android.widget.ListView;
 import com.example.allseven64.cataloguemovieuiux.DetailMovieActivity;
 import com.example.allseven64.cataloguemovieuiux.MovieItems;
 import com.example.allseven64.cataloguemovieuiux.R;
+import com.example.allseven64.cataloguemovieuiux.SharedPreference;
 import com.example.allseven64.cataloguemovieuiux.asynctaskloader.SearchAsyncTaskLoader;
 import com.example.allseven64.cataloguemovieuiux.adapter.SearchAdapter;
 
@@ -32,6 +33,8 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
     SearchAdapter adapter;
     EditText edtMovie;
     Button btnCari;
+
+    SharedPreference sharedPreference;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,6 +62,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
                 detailIntent.putExtra(DetailMovieActivity.EXTRA_OVERVIEW, movieItems.getOverview());
                 detailIntent.putExtra(DetailMovieActivity.EXTRA_RELEASE, movieItems.getReleaseDate());
                 detailIntent.putExtra(DetailMovieActivity.EXTRA_POPULARITY, movieItems.getPopularity());
+                detailIntent.putExtra(DetailMovieActivity.EXTRA_VOTE, movieItems.getVoteAverage());
 
                 startActivity(detailIntent);
             }
@@ -71,6 +75,14 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
         String movie = edtMovie.getText().toString();
         Bundle bundle = new Bundle();
         bundle.putString(EXTRAS_MOVIE, movie);
+
+        sharedPreference = new SharedPreference(getActivity());
+
+        if (sharedPreference.loadDarkModeState()==true) {
+            getActivity().setTheme(R.style.DarkTheme);
+        }
+        else  getActivity().setTheme(R.style.AppTheme);
+
 
         getLoaderManager().initLoader(0, bundle, this);
         return view;

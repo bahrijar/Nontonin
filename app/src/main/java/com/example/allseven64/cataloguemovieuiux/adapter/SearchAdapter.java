@@ -69,6 +69,7 @@ public class SearchAdapter extends BaseAdapter {
             holder.textViewOverview = convertView.findViewById(R.id.tv_overview);
             holder.textViewReleaseDate = convertView.findViewById(R.id.tv_release);
             holder.textViewPopularity = convertView.findViewById(R.id.tv_popularity);
+            holder.textViewVoteAverage = convertView.findViewById(R.id.tv_vote);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
@@ -76,6 +77,7 @@ public class SearchAdapter extends BaseAdapter {
 
         holder.textViewTitle.setText(mData.get(position).getTitle());
         holder.textViewOverview.setText(mData.get(position).getOverview());
+        holder.textViewVoteAverage.setText(mData.get(position).getVoteAverage());
         holder.textViewPopularity.setText(convertView.getResources().getString(R.string.popularity)+": "+mData.get(position).getPopularity());
         Glide.with(context).load(mData.get(position).getPosterPath()).into(holder.imageViewPoster);
 
@@ -99,6 +101,7 @@ public class SearchAdapter extends BaseAdapter {
         TextView textViewTitle;
         TextView textViewOverview;
         TextView textViewReleaseDate;
+        TextView textViewVoteAverage;
         TextView textViewPopularity;
     }
 }

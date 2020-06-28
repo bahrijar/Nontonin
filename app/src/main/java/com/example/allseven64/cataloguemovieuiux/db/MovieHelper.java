@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.allseven64.cataloguemovieuiux.entity.MovieModel;
+import com.example.allseven64.cataloguemovieuiux.model.MovieModel;
 
 import java.util.ArrayList;
 
@@ -54,7 +54,7 @@ public class MovieHelper {
                 movieModel.setOverview(cursor.getString(cursor.getColumnIndexOrThrow(OVERVIEW)));
                 movieModel.setReleaseDate(cursor.getString(cursor.getColumnIndexOrThrow(RELEASE)));
                 movieModel.setPopularity(cursor.getString(cursor.getColumnIndexOrThrow(POPULARITY)));
-                movieModel.setVote_average(cursor.getDouble(cursor.getColumnIndexOrThrow(VOTE)));
+                movieModel.setVote_average(cursor.getString(cursor.getColumnIndexOrThrow(VOTE)));
 
                 arrayList.add(movieModel);
                 cursor.moveToNext();

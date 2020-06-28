@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.example.allseven64.cataloguemovieuiux.fragment.FavoriteFragment;
 import com.example.allseven64.cataloguemovieuiux.fragment.HomeFragment;
 import com.example.allseven64.cataloguemovieuiux.fragment.NowPlayingFragment;
+import com.example.allseven64.cataloguemovieuiux.fragment.SettingFragment;
 import com.example.allseven64.cataloguemovieuiux.fragment.UpcomingFragment;
 
 
@@ -114,12 +115,12 @@ public class MainActivity extends AppCompatActivity
             fragment.setArguments(bundle);
 
         }
-//        else if (id == R.id.nav_share) {
-//
-//        }
-//        else if (id == R.id.nav_send) {
-//
-//        }
+        else if (id == R.id.nav_setting) {
+            title = getResources().getString(R.string.setting);
+            fragment = new SettingFragment();
+            fragment.setArguments(bundle);
+
+        }
 
         //Ganti Halaman dengan memanggil fragment replace
         if (fragment != null){

@@ -8,7 +8,7 @@ public class MovieItems {
     private String releaseDate;
     private String popularity;
     private String overview;
-    private Double voteAverage;
+    private String voteAverage;
 
     public MovieItems(JSONObject object){
         try {
@@ -17,7 +17,7 @@ public class MovieItems {
             String release_date = object.getString("release_date");
             String popularity = object.getString("popularity");
             String overview = object.getString("overview");
-            Double voteAverage = object.getDouble("vote_average");
+            String voteAverage = object.getString("vote_average");
 
             this.posterPath = "http://image.tmdb.org/t/p/w185"+posterPath;
             this.title = title;
@@ -63,11 +63,11 @@ public class MovieItems {
         this.overview = overview;
     }
 
-    public Double getVoteAverage() {
+    public String getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Double voteAverage) {
+    public void setVoteAverage(String voteAverage) {
         this.voteAverage = voteAverage;
     }
 

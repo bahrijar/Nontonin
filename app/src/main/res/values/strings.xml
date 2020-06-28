@@ -17,6 +17,7 @@
     <string name="now_playing">Now Playing</string>
     <string name="upcoming">Upcoming</string>
     <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
     <string name="communicate">Communicate</string>
     <string name="send">Send</string>
     <string name="search_movie">Search Movie</string>
@@ -30,4 +31,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_detail_movie">DetailMovieActivity</string>
     <string name="vote_average">Vote</string>
+
 </resources>

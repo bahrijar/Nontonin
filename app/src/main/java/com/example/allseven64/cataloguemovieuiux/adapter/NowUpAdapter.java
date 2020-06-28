@@ -77,38 +77,16 @@ public class NowUpAdapter extends RecyclerView.Adapter<NowUpAdapter.ViewHolder> 
             e.printStackTrace();
         }
 
-        holder.btnDetail.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent (context, DetailMovieActivity.class);
-                intent.putExtra(DetailMovieActivity.EXTRA_TITLE, mData.get(position).getTitle());
-                intent.putExtra(DetailMovieActivity.EXTRA_OVERVIEW, mData.get(position).getOverview());
-                intent.putExtra(DetailMovieActivity.EXTRA_RELEASE, mData.get(position).getReleaseDate());
-                intent.putExtra(DetailMovieActivity.EXTRA_POPULARITY, mData.get(position).getPopularity());
-                intent.putExtra(DetailMovieActivity.EXTRA_VOTE, mData.get(position).getVoteAverage());
-                intent.putExtra(DetailMovieActivity.EXTRA_POSTER, mData.get(position).getPosterPath());
-
-                context.startActivity(intent);
-            }
-        });
-
-        holder.btnShare.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Toast.makeText(context,"Share "+ ""+ mData.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imageViewPoster;
         TextView textViewTitle;
         TextView textViewOverview;
         TextView textViewReleaseDate;
         TextView textViewPopularity;
         TextView textViewVoteAverage;
-        Button btnDetail, btnShare;
+
 
         ViewHolder (View itemView){
             super(itemView);
@@ -118,9 +96,24 @@ public class NowUpAdapter extends RecyclerView.Adapter<NowUpAdapter.ViewHolder> 
             textViewReleaseDate = itemView.findViewById(R.id.tv_release_cv);
             textViewPopularity = itemView.findViewById(R.id.tv_popularity_cv);
             textViewVoteAverage = itemView.findViewById(R.id.tv_vote_cv);
-            btnDetail = itemView.findViewById(R.id.btn_set_detail);
-            btnShare = itemView.findViewById(R.id.btn_set_share);
 
+
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            Intent intent = new Intent (context, DetailMovieActivity.class);
+            intent.putExtra(DetailMovieActivity.EXTRA_TITLE, mData.get(position).getTitle());
+            intent.putExtra(DetailMovieActivity.EXTRA_OVERVIEW, mData.get(position).getOverview());
+            intent.putExtra(DetailMovieActivity.EXTRA_RELEASE, mData.get(position).getReleaseDate());
+            intent.putExtra(DetailMovieActivity.EXTRA_POPULARITY, mData.get(position).getPopularity());
+            intent.putExtra(DetailMovieActivity.EXTRA_VOTE, mData.get(position).getVoteAverage());
+            intent.putExtra(DetailMovieActivity.EXTRA_POSTER, mData.get(position).getPosterPath());
+
+            context.startActivity(intent);
         }
     }
 }

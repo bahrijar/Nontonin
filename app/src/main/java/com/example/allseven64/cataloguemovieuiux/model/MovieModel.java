@@ -1,4 +1,4 @@
-package com.example.allseven64.cataloguemovieuiux.entity;
+package com.example.allseven64.cataloguemovieuiux.model;
 
 import android.database.Cursor;
 import android.os.Parcel;

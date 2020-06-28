@@ -14,11 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.allseven64.cataloguemovieuiux.R;
+import com.example.allseven64.cataloguemovieuiux.SharedPreference;
 import com.example.allseven64.cataloguemovieuiux.adapter.FavAdapter;
-import com.example.allseven64.cataloguemovieuiux.db.MovieHelper;
-import com.example.allseven64.cataloguemovieuiux.entity.MovieModel;
-
-import java.util.ArrayList;
 
 import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.CONTENT_URI;
 
@@ -28,6 +25,7 @@ import static com.example.allseven64.cataloguemovieuiux.db.DatabaseContract.CONT
 public class FavoriteFragment extends Fragment {
     RecyclerView recyclerView;
     Context context;
+    SharedPreference sharedPreference;
 
     private Cursor list;
     private FavAdapter favAdapter;
@@ -51,6 +49,13 @@ public class FavoriteFragment extends Fragment {
         favAdapter = new FavAdapter(getActivity());
         favAdapter.setListFavMovie(list);
         recyclerView.setAdapter(favAdapter);
+
+        sharedPreference = new SharedPreference(getActivity());
+
+        if (sharedPreference.loadDarkModeState()==true) {
+            getActivity().setTheme(R.style.DarkTheme);
+        }
+        else  getActivity().setTheme(R.style.AppTheme);
 
         new LoadMovieAsync().execute();
 

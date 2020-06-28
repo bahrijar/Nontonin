@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.allseven64.cataloguemovieuiux.MovieItems;
+import com.example.allseven64.cataloguemovieuiux.SharedPreference;
 import com.example.allseven64.cataloguemovieuiux.asynctaskloader.NowPlayingAsyncTaskLoader;
 import com.example.allseven64.cataloguemovieuiux.R;
 import com.example.allseven64.cataloguemovieuiux.adapter.NowUpAdapter;
@@ -30,7 +31,7 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
     NowUpAdapter adapter;
     ArrayList<MovieItems> nowPlayingData;
     Context context;
-
+    SharedPreference sharedPreference;
 
     public NowPlayingFragment() {
         // Required empty public constructor
@@ -49,6 +50,14 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
         getLoaderManager().initLoader(0, null,this);
+
+        sharedPreference = new SharedPreference(getActivity());
+
+        if (sharedPreference.loadDarkModeState()==true) {
+            getActivity().setTheme(R.style.DarkTheme);
+        }
+        else getActivity().setTheme(R.style.AppTheme);
+
 
         Log.e(TAG, "onCreateView: halaman fragment ");
         return view;

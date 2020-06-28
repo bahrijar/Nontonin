@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="#1C1F26"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/img_poster"
         android:layout_width="60dp"
         android:layout_height="75dp"
+        android:src="@color/colorPrimaryDark"
         android:layout_marginRight="16dp" />
 
     <LinearLayout
@@ -22,15 +24,18 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/seguisb"
             android:text="@string/title_movie"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_overview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:fontFamily="@font/segoeui"
+            android:textColor="@android:color/white"
             android:maxLines="1"
             android:text="@string/overview" />
 
@@ -38,12 +43,24 @@
             android:id="@+id/tv_release"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/segoeui"
+            android:textColor="@android:color/white"
             android:text="@string/release" />
 
         <TextView
             android:id="@+id/tv_popularity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/segoeui"
+            android:textColor="@android:color/white"
+            android:text="@string/popularity" />
+
+        <TextView
+            android:id="@+id/tv_vote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoeui"
+            android:textColor="@android:color/white"
             android:text="@string/popularity" />
     </LinearLayout>
 </RelativeLayout>
